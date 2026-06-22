@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Profile - Michelle Wangari Kinuthia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Links to our stylesheet -->
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Hero -->
+    <section class="hero" id="profile-section">
+      <div class="avatar" aria-hidden="true">🧑‍💻</div>
+      <div class="hero-text">
+        <p class="hero-eyebrow">Student Profile</p>
+        <h1 id="card-name">Loading…</h1>
+        <p id="card-course"></p>
+        <p id="card-country"></p>
+      </div>
+    </section>
+
+    <!-- Stats grid -->
+    <section class="stats-section">
+      <p class="section-title">Quick Stats</p>
+      <div id="stats-grid"></div>
+    </section>
+
+    <!-- Study progress -->
+    <section class="progress-section">
+      <p class="section-title">Study Progress</p>
+      <div class="progress-track">
+        <div id="progress-bar-fill" style="width:0%"></div>
+      </div>
+      <p id="progress-label"></p>
+    </section>
+
+    <!-- Hobbies -->
+    <section class="hobbies-section">
+      <p class="section-title">Hobbies &amp; Interests</p>
+      <div id="hobby-list"></div>
+    </section>
+
+    <!-- Alert / Confirm buttons -->
+    <section class="actions-section">
+      <p class="section-title">Interactive Dialogs</p>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-alert">
+          📋 Show Profile Alert
+        </button>
+        <button class="btn btn-secondary" id="btn-confirm">
+          🎂 Age Fun-Facts Confirm
+        </button>
+      </div>
+    </section>
+
+   
+
+    <footer>
+      Personal Profile Program &nbsp;·&nbsp; JavaScript Assignment &nbsp;·&nbsp;
+      <span id="footer-year"></span>
+    </footer>
+
+  </div>
+
+  <!-- Links to our script -->
+  <script src="profile.js"></script>
+  <script>
+    document.getElementById("footer-year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
