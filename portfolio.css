@@ -1,0 +1,520 @@
+/* ============================================
+   Michelle Kinuthia — Portfolio Stylesheet
+   Custom CSS (companion to index.html)
+   ============================================ */
+
+/* ---------- Google Fonts Import ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  --space:       #080D1A;
+  --shield:      #0F2244;
+  --teal:        #0DCFB4;
+  --teal-dark:   #09A88F;
+  --white:       #EEF2FF;
+  --silver:      #94A3B8;
+  --card-bg:     #111827;
+  --border:      rgba(13, 207, 180, 0.18);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+/* ---------- Base Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--space);
+  color: var(--white);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ---------- Custom Navbar ---------- */
+.navbar-custom {
+  background-color: rgba(8, 13, 26, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-custom .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--teal) !important;
+  letter-spacing: -0.02em;
+}
+
+.navbar-custom .navbar-brand span {
+  color: var(--white);
+}
+
+.navbar-custom .nav-link {
+  color: var(--silver) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.navbar-custom .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
+  color: var(--teal) !important;
+}
+
+.navbar-custom .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-toggler-custom {
+  border: 1px solid var(--border) !important;
+  padding: 0.35rem 0.6rem;
+}
+
+.navbar-toggler-custom .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230DCFB4' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #080D1A 0%, #0F2244 50%, #080D1A 100%);
+  overflow: hidden;
+}
+
+/* Circuit grid signature element */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(13, 207, 180, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 207, 180, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Glowing orb */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13, 207, 180, 0.12) 0%, transparent 70%);
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@keyframes gridPulse {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--teal);
+}
+
+.hero-name {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name .teal-accent {
+  color: var(--teal);
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 300;
+  color: var(--silver);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: var(--space);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.2rem;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.btn-teal:hover,
+.btn-teal:focus {
+  background: var(--teal-dark);
+  color: var(--space);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13, 207, 180, 0.3);
+}
+
+/* ---------- Section Common ---------- */
+.section-block {
+  padding: 6rem 0;
+}
+
+.section-block:nth-child(even) {
+  background-color: #0A1020;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--white);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--teal);
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- About Section ---------- */
+.about-img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 380px;
+  /* Extra bottom/right space so the teal border frame doesn't get clipped */
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+/* Teal decorative border offset behind the photo */
+.about-img-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--teal);
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* Glowing teal corner accent */
+.about-img-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 40px;
+  height: 40px;
+  border-top: 3px solid var(--teal);
+  border-left: 3px solid var(--teal);
+  border-radius: 4px 0 0 0;
+  z-index: 2;
+}
+
+.about-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 10px;
+  border: 3px solid rgba(13, 207, 180, 0.25);
+  display: block;
+  filter: none;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 28px 70px rgba(26, 13, 207, 0.2)
+}
+
+.about-bio {
+  color: var(--silver);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.badge-skill {
+  background-color: rgba(13, 207, 180, 0.12) !important;
+  color: var(--teal) !important;
+  border: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.45em 1em;
+  border-radius: 4px;
+  margin: 0.25rem;
+  display: inline-block;
+}
+
+/* ---------- Projects Section ---------- */
+.projects-section {
+  background-color: #0A1020;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--teal);
+  box-shadow: 0 16px 40px rgba(13, 207, 180, 0.12);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: filter 0.25s ease;
+}
+
+.project-card:hover img {
+  filter: brightness(1);
+}
+
+.project-card .card-body {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.project-card .card-text {
+  color: var(--silver);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.btn-outline-teal {
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.4rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s ease, color 0.2s ease;
+  align-self: flex-start;
+}
+
+.btn-outline-teal:hover,
+.btn-outline-teal:focus {
+  background: var(--teal);
+  color: var(--space);
+}
+
+/* ---------- Contact Section ---------- */
+.contact-section {
+  background-color: var(--space);
+}
+
+.contact-form-wrapper {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 3rem;
+}
+
+.form-label-custom {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 0.5rem;
+}
+
+.form-control-custom {
+  background-color: #0A1020 !important;
+  border: 1px solid var(--border) !important;
+  color: var(--white) !important;
+  border-radius: 6px !important;
+  padding: 0.75rem 1rem !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control-custom::placeholder {
+  color: #475569 !important;
+}
+
+.form-control-custom:focus {
+  border-color: var(--teal) !important;
+  box-shadow: 0 0 0 3px rgba(13, 207, 180, 0.15) !important;
+  outline: none;
+}
+
+/* ---------- Footer ---------- */
+.footer-custom {
+  background-color: #050810;
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.footer-copy {
+  font-size: 0.82rem;
+  color: var(--silver);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  color: var(--teal);
+  border-color: var(--teal);
+  background: rgba(13, 207, 180, 0.08);
+}
+
+/* ---------- Utility ---------- */
+.text-teal { color: var(--teal) !important; }
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section::before { animation: none; }
+  .btn-teal:hover, .project-card:hover { transform: none; }
+}
+
+/* ---------- Mobile Tweaks ---------- */
+@media (max-width: 768px) {
+  .section-block { padding: 4rem 0; }
+  .contact-form-wrapper { padding: 2rem 1.5rem; }
+  .about-img { height: 320px; }  /* shorter portrait on small screens */
+  .hero-section { min-height: 90vh; }
+}
